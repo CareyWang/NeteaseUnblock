@@ -5,11 +5,20 @@
 
     "inbounds": [{
         "port": 58080,
+        "listen": "0.0.0.0",
         "protocol": "shadowsocks",
         "settings": {
             "method": "chacha20-ietf-poly1305",
-            "ota": false,
-            "password": "Passw0rd."
+            "password": "Passw0rd.",
+            "network": "tcp"
+        },
+        "tag": "",
+        "sniffing": {
+            "enabled": true,
+            "destOverride": [
+                "http",
+                "tls"
+            ]
         }
     }],
 
