@@ -1,5 +1,4 @@
 version: "3"
-
 services:
   UnblockNetease:
     container_name: UnblockNetease
@@ -23,5 +22,7 @@ services:
       - "58080:58080"
     volumes:
       - ./v2ray/config.json:/etc/v2ray/config.json
+    links:
+      - UnblockNetease
     depends_on:
       - UnblockNetease
