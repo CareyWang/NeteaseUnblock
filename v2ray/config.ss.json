@@ -1,34 +1,67 @@
 {
-    "log": {
-        "loglevel": "warning"
+    "log":{
+        "loglevel":"warning"
     },
-
-    "inbounds": [{
-        "port": 58080,
-        "listen": "0.0.0.0",
-        "protocol": "shadowsocks",
-        "settings": {
-            "method": "aes-256-gcm",
-            "password": "Passw0rd.",
-            "network": "tcp"
+    "inbounds":[
+        {
+            "port":58080,
+            "listen":"0.0.0.0",
+            "protocol":"shadowsocks",
+            "settings":{
+                "method":"aes-256-gcm",
+                "password":"Passw0rd.",
+                "network":"tcp"
+            },
+            "tag":"",
+            "sniffing":{
+                "enabled":true,
+                "destOverride":[
+                    "http",
+                    "tls"
+                ]
+            }
         },
-        "tag": "",
-        "sniffing": {
-            "enabled": true,
-            "destOverride": [
-                "http",
-                "tls"
-            ]
+        {
+            "port":58081,
+            "listen":"0.0.0.0",
+            "protocol":"shadowsocks",
+            "settings":{
+                "method":"aes-256-gcm",
+                "password":"Passw0rd.",
+                "network":"tcp"
+            },
+            "tag":"",
+            "sniffing":{
+                "enabled":true,
+                "destOverride":[
+                    "http",
+                    "tls"
+                ]
+            }
         }
-    }],
-
-    "outbounds": [{
-        "protocol": "http",
-        "settings": {
-            "servers": [{
-                "address": "UnblockNetease",
-                "port": 8080
-            }]
+    ],
+    "outbounds":[
+        {
+            "protocol":"http",
+            "settings":{
+                "servers":[
+                    {
+                        "address":"UnblockNetease",
+                        "port":8080
+                    }
+                ]
+            }
+        },
+        {
+            "protocol":"http",
+            "settings":{
+                "servers":[
+                    {
+                        "address":"UnblockNetease-IOS",
+                        "port":8081
+                    }
+                ]
+            }
         }
-    }]
+    ]
 }
