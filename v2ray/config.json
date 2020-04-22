@@ -1,67 +1,87 @@
 {
-    "log":{
-        "loglevel":"warning"
+    "log": {
+        "loglevel": "warning"
     },
-    "inbounds":[
+    "inbounds": [
         {
-            "port":58080,
-            "listen":"0.0.0.0",
-            "protocol":"shadowsocks",
-            "settings":{
-                "method":"aes-256-gcm",
-                "password":"Passw0rd.",
-                "network":"tcp"
+            "tag": "win-in",
+            "port": 58080,
+            "listen": "0.0.0.0",
+            "protocol": "shadowsocks",
+            "settings": {
+                "method": "aes-256-gcm",
+                "password": "T5ckndbLSXHQ",
+                "network": "tcp"
             },
-            "tag":"",
-            "sniffing":{
-                "enabled":true,
-                "destOverride":[
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
                     "http",
                     "tls"
                 ]
             }
         },
         {
-            "port":58081,
-            "listen":"0.0.0.0",
-            "protocol":"shadowsocks",
-            "settings":{
-                "method":"aes-256-gcm",
-                "password":"Passw0rd.",
-                "network":"tcp"
+            "tag": "ios-in",
+            "port": 58081,
+            "listen": "0.0.0.0",
+            "protocol": "shadowsocks",
+            "settings": {
+                "method": "aes-256-gcm",
+                "password": "T5ckndbLSXHQ",
+                "network": "tcp"
             },
-            "tag":"",
-            "sniffing":{
-                "enabled":true,
-                "destOverride":[
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
                     "http",
                     "tls"
                 ]
             }
         }
     ],
-    "outbounds":[
+    "outbounds": [
         {
-            "protocol":"http",
-            "settings":{
-                "servers":[
+            "tag": "win-out",
+            "protocol": "http",
+            "settings": {
+                "servers": [
                     {
-                        "address":"UnblockNetease",
-                        "port":8080
+                        "address": "UnblockNetease",
+                        "port": 8080
                     }
                 ]
             }
         },
         {
-            "protocol":"http",
-            "settings":{
-                "servers":[
+            "tag": "ios-out",
+            "protocol": "http",
+            "settings": {
+                "servers": [
                     {
-                        "address":"UnblockNetease-IOS",
-                        "port":8081
+                        "address": "UnblockNetease-IOS",
+                        "port": 8081
                     }
                 ]
             }
         }
-    ]
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "inboundTag": [
+                    "win-in"
+                ],
+                "outboundTag": "win-out"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "ios-in"
+                ],
+                "outboundTag": "ios-out"
+            }
+        ]
+    }
 }
