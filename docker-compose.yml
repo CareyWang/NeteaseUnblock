@@ -8,30 +8,17 @@ services:
       NODE_ENV: production
     expose:
       - 8080
-    command: -p 8080:18080 -s -e http://music.163.com
-
-  UnblockNetease-IOS:
-    container_name: UnblockNetease-IOS
-    restart: always
-    image: nondanee/unblockneteasemusic:latest
-    environment:
-      NODE_ENV: production
-    expose:
-      - 8081
-    command: -p 8081:18081 -s -e https://music.163.com
+    command: -p 8080:18080 -s -e http://music.163.com -o ${MUSIC_SOURCE}
 
   UnblockV2ray:
     container_name: UnblockV2ray
     restart: always
     image: v2fly/v2fly-core:latest
     ports:
-      - "58080:58080"
-      - "58081:58081"
+      - "${SS_PORT}:58080"
     volumes:
       - ./v2ray/config.json:/etc/v2ray/config.json
     links:
       - UnblockNetease
-      - UnblockNetease-IOS
     depends_on:
       - UnblockNetease
-      - UnblockNetease-IOS
