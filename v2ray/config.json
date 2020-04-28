@@ -4,26 +4,8 @@
     },
     "inbounds": [
         {
-            "tag": "win-in",
+            "tag": "163-in",
             "port": 58080,
-            "listen": "0.0.0.0",
-            "protocol": "shadowsocks",
-            "settings": {
-                "method": "aes-256-gcm",
-                "password": "T5ckndbLSXHQ",
-                "network": "tcp"
-            },
-            "sniffing": {
-                "enabled": true,
-                "destOverride": [
-                    "http",
-                    "tls"
-                ]
-            }
-        },
-        {
-            "tag": "ios-in",
-            "port": 58081,
             "listen": "0.0.0.0",
             "protocol": "shadowsocks",
             "settings": {
@@ -42,25 +24,13 @@
     ],
     "outbounds": [
         {
-            "tag": "win-out",
+            "tag": "163-out",
             "protocol": "http",
             "settings": {
                 "servers": [
                     {
                         "address": "UnblockNetease",
                         "port": 8080
-                    }
-                ]
-            }
-        },
-        {
-            "tag": "ios-out",
-            "protocol": "http",
-            "settings": {
-                "servers": [
-                    {
-                        "address": "UnblockNetease-IOS",
-                        "port": 8081
                     }
                 ]
             }
@@ -71,16 +41,9 @@
             {
                 "type": "field",
                 "inboundTag": [
-                    "win-in"
+                    "163-in"
                 ],
-                "outboundTag": "win-out"
-            },
-            {
-                "type": "field",
-                "inboundTag": [
-                    "ios-in"
-                ],
-                "outboundTag": "ios-out"
+                "outboundTag": "163-out"
             }
         ]
     }
