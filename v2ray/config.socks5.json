@@ -2,25 +2,19 @@
     "log": {
         "loglevel": "warning"
     },
-
     "inbounds": [{
         "tag": "163-in",
         "port": 58080,
         "listen": "0.0.0.0",
-        "protocol": "vmess",
+        "protocol": "socks",
         "settings": {
-            "clients": [{
-                "id": "69f53690-db19-4fd3-c618-7c82cc47ba0d",
-                "alterId": 1
-            }]
-        },
-        "streamSettings": {
-            "network": "ws",
-            "security": "none",
-            "wsSettings": {
-                "path": "/163",
-                "headers": {}
-            }
+            "auth": "password",
+            "accounts": [{
+                "user": "netease",
+                "pass": "T5ckndbLSXHQ"
+            }],
+            "udp": false,
+            "ip": "127.0.0.1"
         },
         "sniffing": {
             "enabled": true,
@@ -30,7 +24,6 @@
             ]
         }
     }],
-
     "outbounds": [{
         "tag": "163-out",
         "protocol": "http",

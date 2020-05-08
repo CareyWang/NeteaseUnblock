@@ -9,7 +9,7 @@
             "listen": "0.0.0.0",
             "protocol": "shadowsocks",
             "settings": {
-                "method": "aes-256-gcm",
+                "method": "chacha20-ietf-poly1305",
                 "password": "T5ckndbLSXHQ",
                 "network": "tcp"
             },

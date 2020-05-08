@@ -1,67 +1,50 @@
 {
-    "log":{
-        "loglevel":"warning"
+    "log": {
+        "loglevel": "warning"
     },
-    "inbounds":[
+    "inbounds": [
         {
-            "port":58080,
-            "listen":"0.0.0.0",
-            "protocol":"shadowsocks",
-            "settings":{
-                "method":"aes-256-gcm",
-                "password":"Passw0rd.",
-                "network":"tcp"
+            "tag": "163-in",
+            "port": 58080,
+            "listen": "0.0.0.0",
+            "protocol": "shadowsocks",
+            "settings": {
+                "method": "chacha20-ietf-poly1305",
+                "password": "T5ckndbLSXHQ",
+                "network": "tcp"
             },
-            "tag":"",
-            "sniffing":{
-                "enabled":true,
-                "destOverride":[
-                    "http",
-                    "tls"
-                ]
-            }
-        },
-        {
-            "port":58081,
-            "listen":"0.0.0.0",
-            "protocol":"shadowsocks",
-            "settings":{
-                "method":"aes-256-gcm",
-                "password":"Passw0rd.",
-                "network":"tcp"
-            },
-            "tag":"",
-            "sniffing":{
-                "enabled":true,
-                "destOverride":[
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
                     "http",
                     "tls"
                 ]
             }
         }
     ],
-    "outbounds":[
+    "outbounds": [
         {
-            "protocol":"http",
-            "settings":{
-                "servers":[
+            "tag": "163-out",
+            "protocol": "http",
+            "settings": {
+                "servers": [
                     {
-                        "address":"UnblockNetease",
-                        "port":8080
-                    }
-                ]
-            }
-        },
-        {
-            "protocol":"http",
-            "settings":{
-                "servers":[
-                    {
-                        "address":"UnblockNetease-IOS",
-                        "port":8081
+                        "address": "UnblockNetease",
+                        "port": 8080
                     }
                 ]
             }
         }
-    ]
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "inboundTag": [
+                    "163-in"
+                ],
+                "outboundTag": "163-out"
+            }
+        ]
+    }
 }

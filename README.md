@@ -20,9 +20,12 @@ docker-compose up -d
 
 必须下载并安装信任证书，证书来源：[nondanee/UnblockNeteaseMusic](https://raw.githubusercontent.com/nondanee/UnblockNeteaseMusic/master/ca.crt) （IOS 使用 Safari 打开）。
 
-SS 默认端口 58080，加密方式 aes-256-gcm，密码 T5ckndbLSXHQ。其中 .env 中目前可修改端口与音源，若不了解原项目，不建议修改默认音源。
+.env 中目前可修改端口与音源，若不了解原项目，不建议修改默认音源。各类客户端设置，请参照原作者 [issue](https://github.com/nondanee/UnblockNeteaseMusic/issues) 前人教程自行研究。
 
-各类客户端设置，请参照原作者 [issue](https://github.com/nondanee/UnblockNeteaseMusic/issues) 前人教程自行研究。
+通过修改 v2ray/config.json 为对应配置文件，可使用 socks5/shadowsocks/vmess 作为前置代理。
+- socks 端口 `58080`，用户名: `netease`，密码: `T5ckndbLSXHQ`。
+- shadowsocks 端口 `58080`，加密方式 `chacha20-ietf-poly1305`，密码 `T5ckndbLSXHQ`。
+- vmess 端口 `58080`，uuid: `69f53690-db19-4fd3-c618-7c82cc47ba0d`，alertId: `1`， ws-path: `/163`。
 
 # Tips
 
