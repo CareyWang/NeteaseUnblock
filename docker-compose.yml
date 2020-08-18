@@ -42,4 +42,4 @@ services:
       - UnblockNeteaseIOS
     depends_on:
       - UnblockNeteaseIOS
-    command: -L=ss://rc4-md5:${PASSWORD}@:58081 -F=UnblockNetease:8081
+    command: -L=ss://rc4-md5:${PASSWORD}@:58081 -F=UnblockNeteaseIOS:8081
