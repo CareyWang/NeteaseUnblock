@@ -10,15 +10,36 @@ services:
       - 8080
     command: -p 8080:18080 -s -e http://music.163.com -o ${MUSIC_SOURCE}
 
-  UnblockV2ray:
-    container_name: UnblockV2ray
+  UnblockNeteaseIOS:
+    container_name: UnblockNeteaseIOS
     restart: always
-    image: v2fly/v2fly-core:latest
+    image: nondanee/unblockneteasemusic:latest
+    environment:
+      NODE_ENV: production
+    expose:
+      - 8081
+    command: -p 8081:18081 -s -e https://music.163.com -o ${MUSIC_SOURCE}
+
+  Gost:
+    container_name: Gost
+    restart: always
+    image: ginuerzh/gost:latest
     ports:
-      - "${V2Ray_PORT}:58080"
-    volumes:
-      - ./v2ray/config.json:/etc/v2ray/config.json
+      - "${Gost_PORT}:58080"
     links:
       - UnblockNetease
     depends_on:
       - UnblockNetease
+    command: -L=ss://rc4-md5:${PASSWORD}@:58080 -F=UnblockNetease:8080 
+
+  GostIOS:
+    container_name: GostIOS
+    restart: always
+    image: ginuerzh/gost:latest
+    ports:
+      - "${Gost_IOS_PORT}:58081"
+    links:
+      - UnblockNeteaseIOS
+    depends_on:
+      - UnblockNeteaseIOS
+    command: -L=ss://rc4-md5:${PASSWORD}@:58081 -F=UnblockNetease:8081

@@ -4,7 +4,7 @@
 
 # 特性
 
-- 使用 V2Ray 作为前置代理，实现服务加密，默认使用 SS 中转流量。
+- 使用 Gost 作为前置代理，实现服务加密，默认使用 SS 中转流量。
 - docker-compose 一键启动。
 
 # 运行
@@ -22,10 +22,7 @@ docker-compose up -d
 
 .env 中目前可修改端口与音源，若不了解原项目，不建议修改默认音源。各类客户端设置，请参照原作者 [issue](https://github.com/nondanee/UnblockNeteaseMusic/issues) 前人教程自行研究。
 
-通过修改 v2ray/config.json 为对应配置文件，可使用 socks5/shadowsocks/vmess 作为前置代理。
-- socks 端口 `58080`，用户名: `netease`，密码: `T5ckndbLSXHQ`。
-- shadowsocks 端口 `58080`，加密方式 `chacha20-ietf-poly1305`，密码 `T5ckndbLSXHQ`。
-- vmess 端口 `58080`，uuid: `69f53690-db19-4fd3-c618-7c82cc47ba0d`，alertId: `1`， ws-path: `/163`。
+Apple 系默认端口 `58081`，其他客户端默认端口 `58080`，加密方式 `rc4-md5`，密码 `T5ckndbLSXHQ`。
 
 # Tips
 
