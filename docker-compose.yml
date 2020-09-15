@@ -3,7 +3,7 @@ services:
   UnblockNetease:
     container_name: UnblockNetease
     restart: always
-    image: careywong/neteaseunblock:latest
+    image: nondanee/unblockneteasemusic:latest
     environment:
       NODE_ENV: production
     expose:
@@ -13,7 +13,7 @@ services:
   UnblockNeteaseIOS:
     container_name: UnblockNeteaseIOS
     restart: always
-    image: careywong/neteaseunblock:latest
+    image: nondanee/unblockneteasemusic:latest
     environment:
       NODE_ENV: production
     expose:
