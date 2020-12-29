@@ -9,6 +9,10 @@ services:
     expose:
       - 8080
     command: -p 8080:18080 -s -e http://music.163.com -o ${MUSIC_SOURCE}
+    logging: 
+      driver: "json-file"
+      options: 
+        max-size: "100m"
 
   UnblockNeteaseIOS:
     container_name: UnblockNeteaseIOS
@@ -19,6 +23,10 @@ services:
     expose:
       - 8081
     command: -p 8081:18081 -s -e https://music.163.com -o ${MUSIC_SOURCE}
+    logging: 
+      driver: "json-file"
+      options: 
+        max-size: "100m"
 
   Gost:
     container_name: Gost
@@ -31,6 +39,10 @@ services:
     depends_on:
       - UnblockNetease
     command: -L=ss://rc4-md5:${PASSWORD}@:58080 -F=UnblockNetease:8080 
+    logging: 
+      driver: "json-file"
+      options: 
+        max-size: "100m"    
 
   GostIOS:
     container_name: GostIOS
@@ -43,3 +55,7 @@ services:
     depends_on:
       - UnblockNeteaseIOS
     command: -L=ss://rc4-md5:${PASSWORD}@:58081 -F=UnblockNeteaseIOS:8081
+    logging: 
+      driver: "json-file"
+      options: 
+        max-size: "100m"    
